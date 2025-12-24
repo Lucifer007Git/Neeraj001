@@ -1,0 +1,365 @@
+:root {
+    --bg: #f4f5f7;
+    --bg-card: #ffffff;
+    --text: #222;
+    --text-muted: #666;
+    --primary: #4a90e2;
+    --primary-dark: #3579c4;
+    --border: #ddd;
+}
+
+body.dark {
+    --bg: #111827;
+    --bg-card: #1f2937;
+    --text: #e5e7eb;
+    --text-muted: #9ca3af;
+    --primary: #60a5fa;
+    --primary-dark: #2563eb;
+    --border: #374151;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: var(--primary);
+    color: white;
+}
+
+.topbar h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.top-actions button {
+    background: white;
+    color: var(--primary);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.top-actions button:hover {
+    opacity: 0.9;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 16px;
+    padding: 16px;
+}
+
+.sidebar {
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 14px;
+    border: 1px solid var(--border);
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.filter-group {
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.filter-group label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: var(--text-muted);
+}
+
+.filter-group input,
+.filter-group select {
+    width: 100%;
+    padding: 7px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.note-form,
+.notes-section {
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 14px;
+    border: 1px solid var(--border);
+}
+
+.note-form h2,
+.notes-section h2 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.form-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    flex: 1;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: var(--text-muted);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
+}
+
+.toolbar {
+    display: flex;
+    gap: 6px;
+}
+
+.toolbar button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.toolbar button:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.editor {
+    min-height: 140px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    padding: 8px;
+    background: var(--bg);
+    overflow-y: auto;
+}
+
+.editor:empty:before {
+    content: attr(placeholder);
+    color: var(--text-muted);
+}
+
+.checkbox-group label {
+    margin-right: 16px;
+    font-size: 14px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.form-actions button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+#saveNoteBtn {
+    background: var(--primary);
+    color: white;
+}
+
+.secondary {
+    background: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+.notes-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+.note-card {
+    background: var(--bg-card);
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+}
+
+.note-card:hover {
+    border-color: var(--primary);
+}
+
+.note-title {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.note-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.note-preview {
+    font-size: 13px;
+    max-height: 60px;
+    overflow: hidden;
+}
+
+.note-tags {
+    font-size: 11px;
+    margin-top: 6px;
+    color: var(--text-muted);
+}
+
+.note-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+.note-actions button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 2px 4px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 10px;
+    border-radius: 999px;
+    background: var(--primary);
+    color: white;
+    margin-right: 4px;
+}
+
+/* Modal */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: var(--bg-card);
+    color: var(--text);
+    padding: 18px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 80vh;
+    overflow-y: auto;
+    border: 1px solid var(--border);
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.modal-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.modal-body {
+    margin-top: 12px;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+}
+
+.modal-body p {
+    margin: 4px 0;
+}
+
+.modal-actions {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.modal-actions button {
+    padding: 7px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.modal-actions button:nth-child(1) { background: var(--primary); color: white; }
+.modal-actions button:nth-child(2) { background: #16a34a; color: white; }
+.modal-actions button:nth-child(3) { background: #6b7280; color: white; }
+.modal-actions button:nth-child(4) { background: #f59e0b; color: white; }
+.modal-actions button:nth-child(5) { background: #3b82f6; color: white; }
+.danger { background: #ef4444 !important; color: white; }
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        order: 2;
+    }
+}

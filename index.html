@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Notes App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="topbar">
+        <h1>📝 Advanced Notes App</h1>
+        <div---- class="top-actions">
+            <button id="darkModeToggle">🌙 Dark Mode</button>
+        </div---->
+    </header>
+
+    <main class="layout">
+        <!-- LEFT SIDEBAR – FILTERS -->
+        <aside class="sidebar">
+            <h2>Filters</h2>
+
+            <div class="filter-group">
+                <label for="searchInput">Search</label>
+                <input type="text" id="searchInput" placeholder="Search by title, tag, text...">
+            </div>
+
+            <div class="filter-group">
+                <label for="categoryFilter">Category</label>
+                <select id="categoryFilter">
+                    <option value="all">All</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="statusFilter">Status</label>
+                <select id="statusFilter">
+                    <option value="all">All</option>
+                    <option value="active">Active</option>
+                    <option value="archived">Archived</option>
+                    <option value="pinned">Pinned</option>
+                    <option value="favorite">Favorite</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="sortSelect">Sort By</label>
+                <select id="sortSelect">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="title">Title (A-Z)</option>
+                </select>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <section class="main-content">
+            <!-- NOTE FORM -->
+            <section class="note-form">
+                <h2 id="formTitle">Create New Note</h2>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="noteTitle">Title</label>
+                        <input type="text" id="noteTitle" placeholder="Enter note title">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="noteCategory">Category</label>
+                        <input type="text" id="noteCategory" placeholder="e.g. Study, Work, Personal">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="noteTags">Tags (comma separated)</label>
+                    <input type="text" id="noteTags" placeholder="e.g. javascript, project, exam">
+                </div>
+
+                <div class="form-group">
+                    <label>Formatting</label>
+                    <div class="toolbar">
+                        <button type="button" data-cmd="bold"><b>B</b></button>
+                        <button type="button" data-cmd="italic"><i>I</i></button>
+                        <button type="button" data-cmd="underline"><u>U</u></button>
+                        <button type="button" data-cmd="insertUnorderedList">• List</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Body</label>
+                    <div id="noteBody" class="editor" contenteditable="true"
+                        placeholder="Write your note here..."></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="notePinned">
+                            Pin Note
+                        </label>
+                        <label>
+                            <input type="checkbox" id="noteFavorite">
+                            Mark as Favorite
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button id="saveNoteBtn">Save Note</button>
+                    <button id="clearFormBtn" class="secondary">Clear</button>
+                </div>
+            </section>
+
+            <!-- NOTES LIST -->
+            <section class="notes-section">
+                <h2>Your Notes</h2>
+                <div id="notesList" class="notes-list">
+                    <!-- Notes cards will be inserted here -->
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <!-- VIEW NOTE MODAL -->
+    <div id="noteModal" class="modal hidden">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p class="modal-meta" id="modalMeta"></p>
+            <div id="modalBody" class="modal-body"></div>
+
+            <div class="modal-actions">
+                <button id="editNoteBtn">Edit</button>
+                <button id="downloadPdfBtn">Download PDF</button>
+                <button id="toggleArchiveBtn">Archive / Unarchive</button>
+                <button id="toggleFavoriteBtn">Favorite / Unfavorite</button>
+                <button id="togglePinBtn">Pin / Unpin</button>
+                <button id="deleteNoteBtn" class="danger">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- jsPDF for PDF download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
